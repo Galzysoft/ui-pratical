@@ -1,41 +1,59 @@
 import 'package:flutter/material.dart';
+import 'package:ruddy/pages/atlanta.dart';
 import 'package:ruddy/widgets/cardV.dart';
+import 'package:ruddy/widgets/cardiB.dart';
+import 'package:ruddy/widgets/myButton.dart';
 
 class FirstPage extends StatefulWidget {
-  const FirstPage({Key? key}) : super(key: key);
+  FirstPage({Key? key}) : super(key: key);
+  int dd = 09;
 
   @override
   State<FirstPage> createState() => _FirstPageState();
 }
 
+// classname();
 class _FirstPageState extends State<FirstPage> {
+  List<Widget> cards = [Text("ada")];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: myAppBar(),
       body: Center(
-          child: GridView(padding: EdgeInsets.all(10),
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 3, crossAxisSpacing: 10,mainAxisSpacing: 10),
+          child: Column(
         children: [
-          CardV(cardColor: Colors.black45,),
-          CardV(Maz: "obodo"),
-          CardV(style: TextStyle(fontStyle: FontStyle.normal)),
-          CardV(),
-          CardV(borderRadius: BorderRadius.only(topLeft: Radius.circular(120))),
-          CardV(cardColor:Color(0xff00E61F) ),
-          CardV(),
-          CardV(),
-          CardV(),
-          CardV(),
-          CardV(),
-          CardV(),
-          CardV(),
-          CardV(),
-          CardV(),
-          CardV(),
-          CardV(),
-          CardV(),
+          myButton(
+              btnText: "add",
+              onTap: () {
+                setState(() {
+                  cards.add(InkWell(onTap: () {}, child: CardV()));
+                  print(cards);
+                });
+              }),
+          myButton(
+            btnText: "Navigate",
+            onTap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => Atlanta(),
+                  ));
+            },
+          ),
+          Expanded(
+            child: Container(
+              decoration: BoxDecoration(color: Colors.redAccent.shade100),
+              child: GridView(
+                padding: EdgeInsets.all(10),
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    crossAxisSpacing: 10,
+                    mainAxisSpacing: 10),
+                children: cards.toList().reversed.toList(),
+              ),
+            ),
+          ),
         ],
       )),
       drawer: Drawer(
