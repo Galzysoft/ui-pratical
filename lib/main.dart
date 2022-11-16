@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ruddy/pages/myPage.dart';
+import 'package:ruddy/pages/my_page/myPage.dart';
 
 void main() {
   print("ada");
