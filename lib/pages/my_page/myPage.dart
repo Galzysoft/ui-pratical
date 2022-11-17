@@ -36,85 +36,66 @@ class FirstPage extends StatelessWidget {
             SizedBox(
               height: 40,
             ),
+            logic.musicTab(),
+            Obx(() {
+              return indicators();
+            }),
             Row(
               children: [
-                TextButton(onPressed: () {
-                  logic.setMusic = true;
-
-                }, child: Obx(() {
-                  return Text(
-                    "Music",
-                    style: GoogleFonts.atomicAge(
-                        fontSize: logic.getMusic == true ? 24 : 18,
-                        color: logic.getMusic == true
-                            ? Colors.white
-                            : Colors.white.withOpacity(0.6)),
-                  );
-                })),
-                SizedBox(width: 10),
-                TextButton(onPressed: () {
-                  logic.setMusic = false;
-                }, child: Obx(() {
-                  return Text(
-                    "Trending",
-                    style: GoogleFonts.atomicAge(
-                        fontSize: logic.getMusic == false ? 24 : 18,
-                        color: logic.getMusic == false
-                            ? Colors.white
-                            : Colors.white.withOpacity(0.6)),
-                  );
-                })),
-                SizedBox(
-                  width: 10,
+                Text(
+                  "Recently Played",
+                  style: GoogleFonts.aladin(color: Colors.white, fontSize: 24),
                 ),
-                Expanded(
+             Expanded(child: SizedBox()),
+                TextButton(
+                    onPressed: () {},
                     child: Row(
-                  children: [
-                    IconButton(
-                        onPressed: () {},
-                        icon: Icon(Icons.videogame_asset_outlined,
-                            color: Colors.white)),
-                    IconButton(
-                        onPressed: () {},
-                        icon: Stack(
-                          children: [
-                            CircleAvatar(
-                              backgroundColor: Colors.white30,
-                              child: Padding(
-                                padding: const EdgeInsets.all(2.0),
-                                child: Icon(Icons.notifications_outlined,
-                                    color: Colors.white),
-                              ),
-                            ),
-                            Positioned(top: 5,right: 1,
-                              child: SizedBox(
-                                height: 10,
-                                width: 10,
-                                child: CircleAvatar(
-                                  child: Center(
-                                    child: Text(
-                                      "2",
-                                      style: TextStyle(
-                                          color: Colors.white, fontSize: 14),
-                                    ),
-                                  ),
-                                  backgroundColor: Colors.red,
-                                ),
-                              ),
-                            )
-                          ],
-                        )),
-                    IconButton(
-                        onPressed: () {},
-                        icon: Icon(Icons.person_pin,size: 40,
-                            color: Colors.white)),
-                  ],
-                ))
+                      children: [
+                        Text(
+                          "More",
+                          style: GoogleFonts.aladin(
+                              color: logic.higlighed, fontSize: 20),
+                        ),
+                        Icon(
+                          Icons.arrow_forward_ios_outlined,
+                          size: 14,
+                          color: logic.higlighed,
+                        )
+                      ],
+                    ))
               ],
-            )
+            ),
+            // ListView.builder(itemBuilder: itemBuilder)
           ]),
         ),
       ),
+    );
+  }
+
+  Row indicators() {
+    return Row(
+      children: [
+        Container(
+          height: 6,
+          width: logic.getMusic == true ? 25 : 6,
+          decoration: BoxDecoration(
+              color:
+                  logic.getMusic == true ? logic.higlighed : logic.notHiglighed,
+              borderRadius: BorderRadius.circular(20)),
+        ),
+        SizedBox(
+          width: 5,
+        ),
+        Container(
+          height: 6,
+          width: logic.getMusic == false ? 25 : 6,
+          decoration: BoxDecoration(
+              color: logic.getMusic == false
+                  ? logic.higlighed
+                  : logic.notHiglighed,
+              borderRadius: BorderRadius.circular(20)),
+        )
+      ],
     );
   }
 }
