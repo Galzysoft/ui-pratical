@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:ruddy/pages/atlanta.dart';
-import 'package:ruddy/widgets/cardV.dart';
-import 'package:ruddy/widgets/cardiB.dart';
-import 'package:ruddy/widgets/myButton.dart';
+
+import 'package:ruddy/widgets/header.dart';
 
 import 'logic.dart';
 
@@ -40,38 +38,14 @@ class FirstPage extends StatelessWidget {
             Obx(() {
               return indicators();
             }),
-            Row(
-              children: [
-                Text(
-                  "Recently Played",
-                  style: GoogleFonts.aladin(color: Colors.white, fontSize: 24),
-                ),
-             Expanded(child: SizedBox()),
-                TextButton(
-                    onPressed: () {},
-                    child: Row(
-                      children: [
-                        Text(
-                          "More",
-                          style: GoogleFonts.aladin(
-                              color: logic.higlighed, fontSize: 20),
-                        ),
-                        Icon(
-                          Icons.arrow_forward_ios_outlined,
-                          size: 14,
-                          color: logic.higlighed,
-                        )
-                      ],
-                    ))
-              ],
-            ),
+            Header(),
             // ListView.builder(itemBuilder: itemBuilder)
           ]),
         ),
       ),
     );
   }
-
+///
   Row indicators() {
     return Row(
       children: [
@@ -99,3 +73,5 @@ class FirstPage extends StatelessWidget {
     );
   }
 }
+
+
