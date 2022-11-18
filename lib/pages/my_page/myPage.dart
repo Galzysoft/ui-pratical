@@ -3,29 +3,21 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'package:ruddy/widgets/header.dart';
+import 'package:ruddy/widgets/recentlyCard.dart';
 
 import 'logic.dart';
 
 // classname();
 class FirstPage extends StatelessWidget {
   /// a getxcontroller instance
-  final MyPageLogic logic = Get.put(MyPageLogic());
+  /// here am going to find this  controller becauswe i have   instanciate it in aur main .dart
+  final MyPageLogic logic = Get.find<MyPageLogic>();
 
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-          gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              colors: [
-            Color(0xff2F3032),
-            Color(0xff202020),
-            Color(0xff171717),
-            Color(0xff121212),
-            Color(0xff121212),
-            Color(0xff121212)
-          ])),
+          gradient: logic.backGradient),
       child: Scaffold(
         backgroundColor: Colors.transparent,
         body: Padding(
@@ -38,14 +30,28 @@ class FirstPage extends StatelessWidget {
             Obx(() {
               return indicators();
             }),
-            Header(),
-            // ListView.builder(itemBuilder: itemBuilder)
+            Header(headerText: "Recently Played", onPressed: () {
+              print("obx");
+            },),
+
+            SizedBox(height: 180,width:double.infinity,
+              child: ListView.builder(
+                /// its for the  scrollingdirection <--->
+                scrollDirection: Axis.horizontal,itemCount: 5,
+                itemBuilder: (context, index) {
+                return Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: RecentlyCard(),
+                );
+              },),
+            )
+
           ]),
         ),
       ),
     );
   }
-///
+/// here we created a method for indicators
   Row indicators() {
     return Row(
       children: [
@@ -73,5 +79,6 @@ class FirstPage extends StatelessWidget {
     );
   }
 }
+
 
 

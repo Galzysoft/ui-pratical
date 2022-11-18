@@ -11,7 +11,7 @@ class Header extends StatelessWidget {
 final String headerText;
   ///we are creating a void function for our onPress fuction
   final void Function()? onPressed;
-final logic= Get.put(MyPageLogic());
+final logic= Get.find<MyPageLogic>();
   @override
   Widget build(BuildContext context) {
     return Row(

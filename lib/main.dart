@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:ruddy/pages/my_page/logic.dart';
 import 'package:ruddy/pages/my_page/myPage.dart';
 
 void main() {
   print("ada");
+  /// a getxcontroller instance
+  /// /// i re located this  for me to be able to  put the  getx controller once
+  /// in the getx scope of controllers that are been usecd
+Get.put(MyPageLogic());
   runApp(const MyApp());
 }
 

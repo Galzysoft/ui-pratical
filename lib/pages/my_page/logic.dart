@@ -5,6 +5,17 @@ import 'package:google_fonts/google_fonts.dart';
 class MyPageLogic extends GetxController{
   Color notHiglighed=Color(0xff1A6465);
   Color higlighed=Color(0xff02F9FE);
+  LinearGradient backGradient=LinearGradient(
+      begin: Alignment.topCenter,
+      end: Alignment.bottomCenter,
+      colors: [
+        Color(0xff2F3032),
+        Color(0xff202020),
+        Color(0xff171717),
+        Color(0xff121212),
+        Color(0xff121212),
+        Color(0xff121212)
+      ]);
   ///obseble
   var ismusic=true.obs;
   bool  get  getMusic{
