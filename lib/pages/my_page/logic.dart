@@ -2,10 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ruddy/model/recently_played_model.dart';
+import 'package:ruddy/pages/profile/view.dart';
 
 class MyPageLogic extends GetxController {
   Color notHiglighed = Color(0xff1A6465);
   Color higlighed = Color(0xff02F9FE);
+  late final int b;
+  static  const int ba=12;
+
+
   LinearGradient backGradient = LinearGradient(
       begin: Alignment.topCenter,
       end: Alignment.bottomCenter,
@@ -26,6 +31,7 @@ class MyPageLogic extends GetxController {
   var ismusic = true.obs;
 
   bool get getMusic {
+
     return ismusic.value;
   }
 
@@ -100,7 +106,30 @@ class MyPageLogic extends GetxController {
                   ],
                 )),
             IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  /// using getx short form
+                  // Get.to(ProfilePage());
+                  /// using getx long form their is no context
+                  // navigator!.push(MaterialPageRoute(
+                  //   builder: (context) => ProfilePage(),
+                  // ));
+                  /// this is  the flutter default navigation
+                  // Navigator.push(
+                  //     context,
+                  //     MaterialPageRoute(
+                  //       builder: (context) => ProfilePage(),
+                  //     ));
+/// flutter default navigation with Get.context  to get the context
+                  Navigator.push(
+                     Get.context!,
+                      MaterialPageRoute(
+                        builder: (context) => ProfilePage(),
+                      )).then((value) {
+                        // int ss=value["id"];
+        print("am back   ruddy $value");
+        setMusic=false;
+                  });
+                },
                 icon: Icon(Icons.person_pin, size: 40, color: Colors.white)),
           ],
         ))
@@ -127,7 +156,7 @@ class MyPageLogic extends GetxController {
       RecentlyPlayedModel(
           imageUrl: "assets/fine.jpg",
           play: () {},
-          firstThree: [ "1 igbo amaka"]),
+          firstThree: ["1 igbo amaka"]),
       RecentlyPlayedModel(
           imageUrl: "assets/w.jpg",
           play: () {},

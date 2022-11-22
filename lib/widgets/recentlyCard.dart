@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ruddy/pages/my_page/logic.dart';
+import 'package:ruddy/pages/profile/view.dart';
 
 class RecentlyCard extends StatelessWidget {
   RecentlyCard({
@@ -16,6 +17,7 @@ class RecentlyCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return SizedBox(
       height: 100,
       width: 340,
