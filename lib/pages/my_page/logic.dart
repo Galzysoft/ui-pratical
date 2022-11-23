@@ -7,8 +7,7 @@ import 'package:ruddy/pages/profile/view.dart';
 class MyPageLogic extends GetxController {
   Color notHiglighed = Color(0xff1A6465);
   Color higlighed = Color(0xff02F9FE);
-  late final int b;
-  static  const int ba=12;
+  late final int b;  static  const int ba=12;
 
 
   LinearGradient backGradient = LinearGradient(
